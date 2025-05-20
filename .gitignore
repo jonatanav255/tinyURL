@@ -1,1 +1,76 @@
 .vscode/launch.json
+
+# Built application files
+/target/
+/build/
+
+# Eclipse files
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA files
+.idea/
+/*.iml
+/out/
+
+# VS Code files
+.vscode/
+
+# Maven wrapper
+/.mvn/wrapper/maven-wrapper.jar
+
+# Gradle wrapper
+/gradle/wrapper/gradle-wrapper.jar
+
+# Gradle build folders
+.gradle/
+/build/
+
+# Logs
+*.log
+
+# Spring Boot properties
+!src/main/resources/
+# exclude local overrides
+src/main/resources/application-*.yml
+src/main/resources/application-*.properties
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Java class files
+*.class
+
+# Package distributions
+*.jar
+*.war
+*.ear
+
+# Coverage reports
+/coverage/
+/target/site/jacoco/
+
+# Dependency directories
+/node_modules/
+
+# IDE coverage files
+*.ec
+
+# Lock files
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Others
+hs_err_pid*
+recovery.properties
+
+target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
