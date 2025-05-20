@@ -1,5 +1,6 @@
 package com.example.TinyURL.service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -27,5 +28,10 @@ public class UrlServiceImpl implements UrlService {
                 .substring(0, 8);
         Url url = new Url(code, originalUrl);
         return urlRepo.save(url);
+    }
+
+    @Override
+    public Optional<Url> findByCode(String code) {
+        return urlRepo.findByCode(code);
     }
 }
