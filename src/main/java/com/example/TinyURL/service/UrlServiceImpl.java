@@ -2,11 +2,14 @@ package com.example.TinyURL.service;
 
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import com.example.TinyURL.models.Url;
 import com.example.TinyURL.repository.UrlRepository;
 
 import jakarta.transaction.Transactional;
 
+@Service
 public class UrlServiceImpl implements UrlService {
 
     private final UrlRepository urlRepo;
