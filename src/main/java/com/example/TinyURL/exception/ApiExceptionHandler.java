@@ -23,7 +23,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
             HttpHeaders headers,
             HttpStatusCode status,
             WebRequest request) {
-
+                
         Map<String, String> errors = new HashMap<>();
         for (FieldError err : ex.getBindingResult().getFieldErrors()) {
             errors.put(err.getField(), err.getDefaultMessage());
@@ -32,7 +32,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         Map<String, Object> body = new HashMap<>();
         body.put("status", status.value());
         body.put("errors", errors);
-
         return new ResponseEntity<>(body, headers, status);
     }
 
@@ -41,7 +40,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         Map<String, Object> body = new HashMap<>();
         body.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
         body.put("error", ex.getMessage());
-
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
 
     }

@@ -2,7 +2,6 @@ package com.example.TinyURL.controller;
 
 import java.net.URI;
 
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -63,4 +62,8 @@ public class UrlController {
                 );
     }
 
+    @GetMapping("/test-error")
+    public void triggerError() {
+        throw new IllegalStateException("This is a test error");
+    }
 }
