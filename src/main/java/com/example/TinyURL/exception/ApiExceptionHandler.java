@@ -1,23 +1,21 @@
 package com.example.TinyURL.exception;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import org.springframework.http.HttpStatusCode;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
-    // does ResponseEntityExceptionHandler become the parent of ApiExceptionHandler
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
@@ -25,7 +23,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
             HttpHeaders headers,
             HttpStatusCode status,
             WebRequest request) {
-        System.err.println(ex);
+
         Map<String, String> errors = new HashMap<>();
         for (FieldError err : ex.getBindingResult().getFieldErrors()) {
             errors.put(err.getField(), err.getDefaultMessage());
@@ -41,7 +39,6 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
         Map<String, Object> body = new HashMap<>();
-
         body.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
         body.put("error", ex.getMessage());
 

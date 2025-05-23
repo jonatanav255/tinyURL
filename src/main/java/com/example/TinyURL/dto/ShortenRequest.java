@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Pattern;
 public class ShortenRequest {
 
     @NotBlank(message = "URL must not be empty")
-//     Basic check for HTTP/HTTPS; can be refined later
     @Pattern(
             regexp = "https?://.+",
             message = "Must be a valid HTTP or HTTPS URL"
