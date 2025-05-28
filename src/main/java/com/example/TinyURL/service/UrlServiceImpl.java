@@ -23,8 +23,7 @@ public class UrlServiceImpl implements UrlService {
     @Transactional
     public Url shorten(String originalUrl) {
         String code;
-        UUID code2 = UUID.randomUUID();
-        System.out.println(code2);
+
         do {
             code = UUID.randomUUID()
                     .toString()
