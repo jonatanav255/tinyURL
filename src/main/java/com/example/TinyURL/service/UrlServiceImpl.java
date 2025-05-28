@@ -22,10 +22,17 @@ public class UrlServiceImpl implements UrlService {
     @Override
     @Transactional
     public Url shorten(String originalUrl) {
-        // Generate an 8-char random code; we'll refine this later
-        String code = UUID.randomUUID().toString()
-                .replace("-", "")
-                .substring(0, 8);
+        String code;
+        UUID code2 = UUID.randomUUID();
+        System.out.println(code2);
+        do {
+            code = UUID.randomUUID()
+                    .toString()
+                    .replace("-", "")
+                    .substring(0, 8);
+
+        } while (urlRepo.findByCode(code).isPresent());
+
         Url url = new Url(code, originalUrl);
         return urlRepo.save(url);
     }
